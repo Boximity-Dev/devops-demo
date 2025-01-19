@@ -162,9 +162,10 @@ Contact: [Your Contact Information]
 
 ## Project Maintainer
 
-[Your Name]
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn Profile]
+Matthew Mattice
+- [*Founder, Boximity Inc.*](www.boximity.ca)
+- GitHub: [@Boximity-Dev](https://github.com/Boximity-Dev)
+- LinkedIn: [@MatthewMattice](https://www.linkedin.com/in/matthewmattice/)
 
 ---
 Built with ❤️ using Terraform, Ansible, and DigitalOcean
