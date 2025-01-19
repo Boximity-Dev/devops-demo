@@ -55,7 +55,7 @@ graph TD
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/saleor-cloud-infrastructure.git
+   git clone https://github.com/Boximity-Dev/devops-demo.git
    cd saleor-cloud-infrastructure
    ```
 
@@ -163,7 +163,7 @@ Contact: [@matthewmattice](mailto:matticem@boximity.ca)
 ## Project Maintainer
 
 Matthew Mattice
-- [*Founder, Boximity Inc.*](https://www.boximity.ca)
+[*Founder, Boximity Inc.*](https://www.boximity.ca)
 - GitHub: [@Boximity-Dev](https://github.com/Boximity-Dev)
 - LinkedIn: [@MatthewMattice](https://www.linkedin.com/in/matthewmattice/)
 
