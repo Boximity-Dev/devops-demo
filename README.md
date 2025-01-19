@@ -163,7 +163,7 @@ Contact: [@matthewmattice](mailto:matticem@boximity.ca)
 ## Project Maintainer
 
 Matthew Mattice
-- [*Founder, Boximity Inc.*](www.boximity.ca)
+- [*Founder, Boximity Inc.*](https://www.boximity.ca)
 - GitHub: [@Boximity-Dev](https://github.com/Boximity-Dev)
 - LinkedIn: [@MatthewMattice](https://www.linkedin.com/in/matthewmattice/)
 
