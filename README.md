@@ -158,7 +158,7 @@ Need help with:
 - Infrastructure audit?
 - Performance optimization?
 
-Contact: [Your Contact Information]
+Contact: [@matthewmattice](mailto:matticem@boximity.ca)
 
 ## Project Maintainer
 
