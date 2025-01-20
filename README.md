@@ -17,11 +17,13 @@ The infrastructure consists of:
 
 ### Infrastructure Diagram
 
+sample overview
+
 ```mermaid
-graph TD
+graph TD;
     Internet[Internet]
     VPC[VPC Network]
-    Droplet[Droplet\nUbuntu 20.04\nDocker]
+    Droplet[Debian-Docker]
     Postgres[Managed PostgreSQL]
     Redis[Managed Redis]
     Storefront[Storefront]
