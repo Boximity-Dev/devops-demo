@@ -16,7 +16,7 @@ provider "digitalocean" {
 resource "digitalocean_vpc" "saleor_network" {
   name     = "saleor-network"
   region   = var.region
-  ip_range = "10.10.10.0/24"
+  ip_range = "192.168.1.0/24"
 }
 
 # Create Droplet
@@ -69,13 +69,13 @@ resource "digitalocean_firewall" "saleor" {
 
 # Create Database
 resource "digitalocean_database_cluster" "postgres" {
-  name       = "saleor-db-${var.environment}"
-  engine     = "pg"
-  version    = "13"
-  size       = var.db_size
-  region     = var.region
-  node_count = 1
-  vpc_uuid   = digitalocean_vpc.saleor_network.id
+  name                 = "saleor-db-${var.environment}"
+  engine              = "pg"
+  version             = "13"
+  size                = var.db_size
+  region              = var.region
+  node_count          = 1
+  private_network_uuid = digitalocean_vpc.saleor_network.id
 }
 
 # Create Redis cluster
@@ -86,5 +86,5 @@ resource "digitalocean_database_cluster" "redis" {
   size       = var.redis_size
   region     = var.region
   node_count = 1
-  vpc_uuid   = digitalocean_vpc.saleor_network.id
+  private_network_uuid = digitalocean_vpc.saleor_network.id
 }
