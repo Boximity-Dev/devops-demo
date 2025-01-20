@@ -19,13 +19,13 @@ variable "region" {
 variable "droplet_size" {
   description = "Droplet size"
   type        = string
-  default     = "s-2vcpu-4gb"
+  default     = "s-1vcpu-1gb"
 }
 
 variable "db_size" {
   description = "Database size"
   type        = string
-  default     = "db-s-1vcpu-1gb"
+  default     = "db-s-1vcpu-1gb-intel"
 }
 
 variable "redis_size" {

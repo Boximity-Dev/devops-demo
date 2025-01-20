@@ -1,0 +1,40 @@
+# ansible/roles/nginx/tasks/main.yml
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Install Certbot and Nginx plugin
+  apt:
+    name:
+      - certbot
+      - python3-certbot-nginx
+    state: present
+
+- name: Create Nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: '0644'
+  notify: restart nginx
+
+- name: Create site configuration
+  template:
+    src: saleor.conf.j2
+    dest: /etc/nginx/sites-available/saleor
+    mode: '0644'
+
+- name: Enable site configuration
+  file:
+    src: /etc/nginx/sites-available/saleor
+    dest: /etc/nginx/sites-enabled/saleor
+    state: link
+  notify: restart nginx
+
+- name: Remove default site configuration
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify: restart nginx

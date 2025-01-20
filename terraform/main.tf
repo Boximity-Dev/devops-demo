@@ -31,6 +31,42 @@ resource "digitalocean_droplet" "saleor" {
   tags = ["saleor", var.environment]
 }
 
+# Create firewall
+resource "digitalocean_firewall" "saleor" {
+  name = "saleor-web"
+  droplet_ids = [digitalocean_droplet.saleor.id]
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "80"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "443"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "22"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  outbound_rule {
+    protocol              = "tcp"
+    port_range           = "1-65535"
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  outbound_rule {
+    protocol              = "udp"
+    port_range           = "1-65535"
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+}
+
 # Create Database
 resource "digitalocean_database_cluster" "postgres" {
   name       = "saleor-db-${var.environment}"
@@ -52,4 +88,3 @@ resource "digitalocean_database_cluster" "redis" {
   node_count = 1
   vpc_uuid   = digitalocean_vpc.saleor_network.id
 }
-
