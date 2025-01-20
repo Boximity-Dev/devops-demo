@@ -23,7 +23,7 @@ resource "digitalocean_vpc" "saleor_network" {
 resource "digitalocean_droplet" "saleor" {
   name     = "saleor-${var.environment}"
   size     = var.droplet_size
-  image    = "ubuntu-20-04-x64"
+  image    = "debian-11-x64"
   region   = var.region
   vpc_uuid = digitalocean_vpc.saleor_network.id
   ssh_keys = [var.ssh_key_fingerprint]
@@ -82,7 +82,7 @@ resource "digitalocean_database_cluster" "postgres" {
 resource "digitalocean_database_cluster" "redis" {
   name       = "saleor-redis-${var.environment}"
   engine     = "redis"
-  version    = "6"
+  version    = "7"
   size       = var.redis_size
   region     = var.region
   node_count = 1

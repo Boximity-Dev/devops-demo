@@ -25,7 +25,7 @@ variable "droplet_size" {
 variable "db_size" {
   description = "Database size"
   type        = string
-  default     = "db-s-1vcpu-1gb-intel"
+  default     = "db-s-1vcpu-1gb"
 }
 
 variable "redis_size" {
