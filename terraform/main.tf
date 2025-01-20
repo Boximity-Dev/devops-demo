@@ -12,6 +12,8 @@ provider "digitalocean" {
   token = var.do_token
 }
 
+
+
 # Create VPC
 resource "digitalocean_vpc" "saleor_network" {
   name     = "saleor-network"
@@ -87,4 +89,22 @@ resource "digitalocean_database_cluster" "redis" {
   region     = var.region
   node_count = 1
   private_network_uuid = digitalocean_vpc.saleor_network.id
+}
+
+# Create project
+resource "digitalocean_project" "saleor" {
+  name        = "saleor-${var.environment}"
+  description = "Saleor e-commerce platform resources for ${var.environment} environment"
+  purpose     = "Web Application"
+  environment = var.environment
+}
+
+# Add resources to project
+resource "digitalocean_project_resources" "saleor" {
+  project = digitalocean_project.saleor.id
+  resources = [
+    digitalocean_droplet.saleor.urn,
+    digitalocean_database_cluster.postgres.urn,
+    digitalocean_database_cluster.redis.urn
+  ]
 }
