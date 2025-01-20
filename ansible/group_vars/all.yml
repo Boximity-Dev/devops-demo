@@ -1,0 +1,9 @@
+# group_vars/all.yml
+---
+saleor_version: "3.x"
+postgres_host: "{{ lookup('env', 'DB_HOST') }}"
+postgres_db: "saleor"
+postgres_user: "doadmin"
+postgres_password: "{{ lookup('env', 'DB_PASSWORD') }}"
+redis_host: "{{ lookup('env', 'REDIS_HOST') }}"
+redis_password: "{{ lookup('env', 'REDIS_PASSWORD') }}"

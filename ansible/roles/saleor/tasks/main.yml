@@ -1,0 +1,27 @@
+# roles/saleor/tasks/main.yml
+---
+- name: Create Saleor directory
+  file:
+    path: /opt/saleor
+    state: directory
+    mode: '0755'
+
+- name: Copy Docker Compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/saleor/docker-compose.yml
+
+- name: Copy environment file
+  template:
+    src: .env.j2
+    dest: /opt/saleor/.env
+
+- name: Pull Docker images
+  command: docker-compose pull
+  args:
+    chdir: /opt/saleor
+
+- name: Start Saleor services
+  command: docker-compose up -d
+  args:
+    chdir: /opt/saleor

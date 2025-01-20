@@ -1,0 +1,28 @@
+# roles/saleor/templates/docker-compose.yml.j2
+version: '3'
+
+services:
+  api:
+    image: ghcr.io/saleor/saleor:{{ saleor_version }}
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  dashboard:
+    image: ghcr.io/saleor/saleor-dashboard:{{ saleor_version }}
+    restart: unless-stopped
+    ports:
+      - "9000:80"
+
+  storefront:
+    image: ghcr.io/saleor/storefront:{{ saleor_version }}
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
