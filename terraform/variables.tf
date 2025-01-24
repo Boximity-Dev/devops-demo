@@ -38,3 +38,8 @@ variable "ssh_key_fingerprint" {
   description = "SSH key fingerprint"
   type        = string
 }
+
+variable "domain_name" {
+  description = "Domain name for the infrastructure"
+  type        = string
+}

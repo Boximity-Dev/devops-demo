@@ -15,9 +15,24 @@ output "redis_host" {
 resource "local_file" "ansible_inventory" {
   content = templatefile("${path.module}/inventory.tpl",
     {
+      # Infrastructure
       droplet_ip     = digitalocean_droplet.saleor.ipv4_address
       database_host  = digitalocean_database_cluster.postgres.host
       redis_host     = digitalocean_database_cluster.redis.host
+      
+      # Environment
+      environment = var.environment
+      
+      # Application
+      # domain_name = var.domain_name
+      
+      # Database
+      database_name = digitalocean_database_cluster.postgres.database
+      database_user = digitalocean_database_cluster.postgres.user
+      database_password = digitalocean_database_cluster.postgres.password
+      
+      # Redis
+      redis_password = digitalocean_database_cluster.redis.password
     }
   )
   filename = "${path.module}/../ansible/inventory/inventory.ini"
